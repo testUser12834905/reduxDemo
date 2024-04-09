@@ -2,18 +2,15 @@ const INCREASE = "INCREASE";
 const DECREASE = "DECREASE";
 const RESET = "RESET";
 
-// Action creators
 const increaseCount = () => ({ type: INCREASE });
 const decreaseCount = () => ({ type: DECREASE });
 const resetCount = () => ({ type: RESET });
 
-// Initial state
 const initialState = {
   count: 0,
   resetCounter: 0,
 };
 
-// Reducer
 function counterReducer(state = initialState, action) {
   switch (action.type) {
     case INCREASE:
@@ -27,13 +24,11 @@ function counterReducer(state = initialState, action) {
   }
 }
 
-// Create Redux store with Redux DevTools integration
 const store = Redux.createStore(
   counterReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-// Function to render the state
 function render() {
   document.getElementById("value").textContent = store.getState().count;
 }
@@ -54,5 +49,4 @@ document.getElementById("reset").addEventListener("click", () => {
   store.dispatch(resetCount());
 });
 
-// Initial render
 render();
